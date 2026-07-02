@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andhika Aidan Gibran — Portfolio</title>
+<meta name="description" content="Multi-disciplinary portfolio spanning social media, operations, partnership marketing, video editing, videography and UI/UX design.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bgPrimary: '#0B0C10',
+          bgSecondary: '#1F2833',
+          teal: '#45A29E',
+          purple: '#8A2BE2',
+          ink: '#FFFFFF',
+          silver: '#C5C6C7',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['"Inter"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root{
+    --teal: #45A29E;
+    --purple: #8A2BE2;
+  }
+  *{ scroll-behavior: smooth; }
+  body{
+    background: #0B0C10;
+    color: #C5C6C7;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display{ font-family: 'Space Grotesk', sans-serif; }
+  .font-mono{ font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- Scrollbars ---------- */
+  ::-webkit-scrollbar{ height: 6px; width: 8px; }
+  ::-webkit-scrollbar-track{ background: transparent; }
+  ::-webkit-scrollbar-thumb{ background: #1F2833; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover{ background: #45A29E55; }
+
+  /* ---------- Focus ---------- */
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
+    outline: 2px solid #45A29E;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ---------- Glass ---------- */
+  .glass{
+    background: rgba(31, 40, 51, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(197, 198, 199, 0.08);
+  }
+  .glass-light{
+    background: rgba(31, 40, 51, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(197, 198, 199, 0.06);
+  }
+
+  /* ---------- Card hover lift ---------- */
+  .lift{ transition: transform .3s ease-in-out, box-shadow .3s ease-in-out, border-color .3s ease-in-out; }
+  .lift:hover{ transform: translateY(-4px); }
+
+  /* ---------- Gradient text ---------- */
+  .grad-text{
+    background: linear-gradient(90deg, #45A29E, #8A2BE2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- Ambient blobs ---------- */
+  .blob{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.28;
+    pointer-events: none;
+    will-change: transform;
+  }
+  @keyframes floatA{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    50%{ transform: translate(40px,-30px) scale(1.08); }
+  }
+  @keyframes floatB{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    50%{ transform: translate(-50px,40px) scale(1.05); }
+  }
+  .blob-1{ animation: floatA 18s ease-in-out infinite; }
+  .blob-2{ animation: floatB 22s ease-in-out infinite; }
+
+  /* ---------- Nav buttons ---------- */
+  .nav-btn{
+    position: relative;
+    transition: color .3s ease-in-out, background-color .3s ease-in-out;
+  }
+  .nav-btn::after{
+    content: '';
+    position: absolute;
+    left: 14px;
+    right: 14px; bottom: 6px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--teal), var(--purple));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease-in-out;
+  }
+  .nav-btn:hover::after{ transform: scaleX(1); }
+  .nav-btn.active{
+    color: #fff;
+    background: rgba(255,255,255,0.04);
+  }
+  .nav-btn.active::after{ transform: scaleX(1); }
+
+  /* ---------- Tab panels ---------- */
+  .tab-panel{ display: none; }
+  .tab-panel.active{ display: block; }
+  @keyframes fadeInUp{
+    from{ opacity: 0; transform: translateY(14px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  .tab-panel.active{ animation: fadeInUp .45s ease-in-out; }
+
+  /* ---------- Typewriter caret ---------- */
+  .caret{
+    display: inline-block;
+    width: 2px;
+    margin-left: 2px;
+    background: #45A29E;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity: 0; } }
+
+  /* ---------- Progress bar ---------- */
+  .progress-fill{
+    width: 0%;
+    transition: width 1.1s cubic-bezier(.16,1,.3,1);
+  }
+
+  /* ---------- Misc ---------- */
+  .tag-pill{
+    border: 1px solid rgba(197,198,199,0.15);
+    transition: border-color .3s ease-in-out, color .3s ease-in-out, background-color .3s ease-in-out;
+  }
+  .tag-pill:hover{ border-color: #45A29E; color: #fff; }
+
+  .grid-tile{ aspect-ratio: 1 / 1; }
+
+  .play-icon{ transition: transform .3s ease-in-out, opacity .3s ease-in-out; }
+  .video-card:hover .play-icon{ transform: scale(1.15); }
+  .video-card:hover .thumb-zoom{ transform: scale(1.06); }
+  .thumb-zoom{ transition: transform .5s ease-in-out; }
+
+  .lightbox-bg{ background: rgba(11,12,16,0.92); backdrop-filter: blur(6px); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+
+<body class="bg-bgPrimary text-silver font-body overflow-x-hidden">
+
+<div class="fixed inset-0 -z-10 overflow-hidden">
+  <div class="blob blob-1 w-[28rem] h-[28rem] bg-teal -top-32 -left-20"></div>
+  <div class="blob blob-2 w-[32rem] h-[32rem] bg-purple top-1/3 -right-32"></div>
+  <div class="blob blob-1 w-[24rem] h-[24rem] bg-purple bottom-0 left-1/4" style="animation-delay:-6s;"></div>
+</div>
+
+<header class="sticky top-0 z-40">
+  <div class="glass border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#top" class="font-display font-semibold text-lg tracking-tight text-white shrink-0">
+          Andhika<span class="grad-text">.</span>Aidan 
+        </a>
+        <a href="#contact" class="hidden md:inline-flex items-center gap-2 text-xs font-mono tag-pill rounded-full px-4 py-2 text-silver">
+          <span class="w-1.5 h-1.5 rounded-full bg-teal"></span> Available for work
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <nav aria-label="Portfolio disciplines" class="glass-light border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-2 md:px-6">
+      <div id="navRow" class="flex md:grid md:grid-cols-6 overflow-x-auto no-scrollbar gap-1 py-2 md:py-0" style="-ms-overflow-style:none; scrollbar-width:none;">
+        <button data-tab="sm" class="nav-btn active flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-8 py-5 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-teal/15 text-teal">SM</span>
+          Social Media
+        </button>
+        <button data-tab="pp" class="nav-btn flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-8 py-5 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-teal/15 text-teal">PP</span>
+          Partnership Marketing
+        </button>
+        <button data-tab="ve" class="nav-btn flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-8 py-5 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-purple/15 text-purple">VE</span>
+          Video Editor
+        </button>
+        <button data-tab="vg" class="nav-btn flex items-center gap-2 whitespace-nowrap shrink-0 rounded-lg px-8 py-5 text-sm text-silver hover:text-white">
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-teal/15 text-teal">VG</span>
+          Videographer
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section id="top" class="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-12 md:pt-24 md:pb-16">
+  <p class="font-mono text-xs text-teal tracking-widest mb-5">PORTFOLIO — 2026</p>
+  <h1 class="font-display font-semibold text-white text-4xl sm:text-5xl md:text-7xl leading-[1.05] max-w-4xl">
+    SanzKirizKa Ninjago.<br>
+    <span class="grad-text">Andhika Aidan Gibran.</span>
+  </h1>
+  <p class="font-mono text-sm md:text-base text-silver mt-6">
+    Currently in focus: <span id="typewriter" class="text-white"></span><span class="caret">&nbsp;</span>
+  </p>
+  <p class="text-silver/90 max-w-xl mt-6 leading-relaxed">
+    I move between data, design, and storytelling — building campaigns, systems, and screens
+    that work as hard as they look good. This site is organized by discipline; pick one above
+    to see the work.
+  </p>
+  <div class="flex flex-wrap gap-3 mt-8">
+    <a href="#workspace" class="rounded-full bg-gradient-to-r from-teal to-purple px-6 py-3 text-sm font-medium text-white shadow-[0_0_30px_rgba(138,43,226,0.25)] hover:shadow-[0_0_45px_rgba(138,43,226,0.45)] transition-all duration-300 ease-in-out">
+      Explore the work
+    </a>
+    <a href="#contact" class="rounded-full glass px-6 py-3 text-sm font-medium text-silver hover:text-white hover:border-teal/40 transition-all duration-300 ease-in-out">
+      Get in touch
+    </a>
+  </div>
+</section>
+
+<main id="workspace" class="max-w-7xl mx-auto px-5 md:px-8 pb-24">
+
+<section id="panel-sm" class="tab-panel active">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-teal mb-2">01 — SM</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">Social Media</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">Audience engagement, new media theory, and community building.</p>
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Community Building</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Platform Strategy</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Content Calendars</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Trend Analysis</span>
+    </div>
+  </header>
+
+  <div class="mt-8 border-t border-silver/10 pt-6">
+  <h4 class="font-display text-sm font-medium text-ink mb-4">Instagram Analytics Snapshot (Last 30 Days)</h4>
+  
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Total Views</h5>
+      <span class="text-2xl font-bold text-white">7.7K+</span>
+      <p class="text-slate-500 text-[10px] mt-1">Across Reels & Stories</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Total Followers</h5>
+      <span class="text-2xl font-bold text-white">800+</span>
+      <p class="text-slate-500 text-[10px] mt-1">Organic community growth</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Interactions</h5>
+      <span class="text-2xl font-bold text-white">180+</span>
+      <p class="text-slate-500 text-[10px] mt-1">Likes, shares, and replies</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Top Format</h5>
+      <span class="text-2xl font-bold text-white">Reels</span>
+      <p class="text-slate-500 text-[10px] mt-1">90.1% interaction rate</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="mt-8 border-t border-silver/10 pt-6">
+  <h4 class="font-display text-sm font-medium text-ink mb-4">YouTube Analytics Snapshot (Last 28 Days)</h4>
+  
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Total Views</h5>
+      <span class="text-2xl font-bold text-white">36.7K+</span>
+      <p class="text-slate-500 text-[10px] mt-1">Strong surge in viewership</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Watch Time</h5>
+      <span class="text-2xl font-bold text-white">252.2</span>
+      <p class="text-slate-500 text-[10px] mt-1">Hours streamed/watched</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Subscribers</h5>
+      <span class="text-2xl font-bold text-white">115+</span>
+      <p class="text-slate-500 text-[10px] mt-1">161% increase vs prior month</p>
+    </div>
+
+    <div class="rounded-2xl border border-silver/10 bg-[#1a2230]/50 p-5 text-center">
+      <h5 class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-2">Monthly Audience</h5>
+      <span class="text-2xl font-bold text-white">18.1K</span>
+      <p class="text-slate-500 text-[10px] mt-1">Unique viewers reached</p>
+    </div>
+
+  </div>
+</div>
+  
+<div class="mt-8 border-t border-silver/10 pt-6">
+  <h3 class="font-display text-lg font-semibold text-white mb-6">Social Media Projects & Tracker</h3>
+<p class="text-slate-400 text-sm mb-6">
+    Here is a transparent view of the personal Google Sheet content plan I use to manage, organize, and track my content progress consistently.
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    
+    <div class="rounded-2xl border border-silver/20 bg-[#1a2230] p-6 flex flex-col items-center text-center shadow-lg">
+      <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-red-500/10 text-red-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.051 1.999h.089c.822.003 1.987.03 2.8.072.728.037 1.093.052 1.298.084.288.044.48.03.563.02.435-.056.954-.116 1.342-.184.213-.037.44-.099.634-.182l-.01.02c.165-.077.295-.16.393-.248.096-.088.167-.18.21-.267.045-.098.076-.208.096-.328.021-.12.028-.27.032-.428.005-.183.006-.296.007-.492v-.054c-.001-.196-.002-.309-.007-.492-.004-.157-.011-.307-.032-.428-.02-.12-.051-.23-.096-.328-.043-.087-.114-.179-.21-.267-.098-.088-.228-.17-.393-.248l-.01-.02c-.194-.083-.421-.145-.634-.182-.388-.068-.907-.128-1.342-.184-.083-.01-.275-.024-.563-.02-.205.032-.57.047-1.298.084-.813.041-1.978.068-2.8.072h-.082c-.815.004-1.98.03-2.799.072-.728.037-1.093.052-1.298.084-.288.044-.48.03-.563.02-.435-.056-.954-.116-1.342-.184-.213-.037-.44-.099-.634-.182l-.01.02c-.165.077-.295.16-.393.248-.096.088-.167.18-.21.267-.045.098-.076.208-.096.328-.021.12-.028.27-.032.428-.005.183-.006.296-.007.492v.054c.001.196.002.309.007.492.004.157.011.307.032.428.02.12.051.23.096.328.043.087.114.179.21.267.098.088.228.17.393.248l.01.02c.194.083.421.145.634.182.388.068.907.128 1.342.184.083.01.275.024.563.02.205-.032.57-.047 1.298-.084.813-.041 1.978-.068 2.8-.072z"/>
+          <path d="m6.026 5.969v4.061l4.032-2.03z"/>
+        </svg>
+      </div>
+      <h4 class="text-white font-semibold text-base mb-1">YouTube Documentation</h4>
+      <p class="text-slate-400 text-xs mb-4">Personal channel documentation & video projects</p>
+      <a href="https://www.youtube.com/@AndhikaStorm1192" target="_blank" class="mt-auto px-4 py-2 bg-white/5 border border-silver/10 rounded-xl text-xs text-white hover:bg-white/10 transition-all">
+        Visit Channel →
+      </a>
+    </div>
+
+    <div class="rounded-2xl border border-silver/20 bg-[#1a2230] p-6 flex flex-col items-center text-center shadow-lg">
+      <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-pink-500/10 text-pink-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.088 3.85.048 4.703.01 5.556 0 5.829 0 8c0 2.171.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.718 1.417.923.51.198 1.092.333 1.942.372C5.556 15.99 5.829 16 8 16s2.444-.01 3.297-.048c.852-.04 1.433-.174 1.942-.372.526-.205.972-.478 1.417-.923.445-.444.718-.89.923-1.417.198-.51.333-1.092.372-1.942C15.99 10.444 16 10.171 16 8c0-2.171-.01-2.444-.048-3.297-.04-.852-.174-1.433-.372-1.942-.205-.526-.478-.972-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.942-.372C10.444.01 10.171 0 8 0zm2.2 1.6h3.4a.6.6 0 0 1 .6.6v3.4a.6.6 0 0 1-.6.6h-3.4a.6.6 0 0 1-.6-.6V2.2a.6.6 0 0 1 .6-.6zm1.384 5.019a3.2 3.2 0 1 1-1.676-1.676 3.2 3.2 0 0 1 1.676 1.676zm-1.232-3.05a1.6 1.6 0 1 0 .694.694l.01-.01a1.6 1.6 0 0 0-.704-.684z"/>
+        </svg>
+      </div>
+      <h4 class="text-white font-semibold text-base mb-1">Instagram Documentation</h4>
+      <p class="text-slate-400 text-xs mb-4">Personal account documentation & content highlights</p>
+      <a href="https://www.instagram.com/andhika_ninjago/" target="_blank" class="mt-auto px-4 py-2 bg-white/5 border border-silver/10 rounded-xl text-xs text-white hover:bg-white/10 transition-all">
+        Visit Profile →
+      </a>
+    </div>
+
+  </div>
+
+  <div class="rounded-2xl border border-silver/20 bg-[#1a2230] p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg">
+    <div>
+     <h4 class="font-display text-base font-semibold text-white mb-1">Live Content Plan & Tracker</h4>
+      <p class="text-slate-400 text-xs">
+        A transparent view of the personal content plan I use to manage and track my regular content progress.
+      </p>
+    </div>
+    
+    <a href="https://docs.google.com/spreadsheets/d/1P58R0GAEQ7KEIxcS_5YwxMftqnfTvX9d8LehRcTcKvg/edit?usp=sharing" target="_blank" class="shrink-0 px-5 py-3 bg-white/5 border border-silver/10 rounded-xl text-sm font-medium text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+        <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+      </svg>
+      View Sheet
+</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="panel-pp" class="tab-panel">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-teal mb-2">02 — PP</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">Partnership Marketing</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">Strategic B2B partnership, sponsorship acquisition, and event funding execution.</p>
+    
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver border border-white/10 bg-white/5">Sponsorship Strategy</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver border border-white/10 bg-white/5">B2B Partnership</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver border border-white/10 bg-white/5">Campaign Execution</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver border border-white/10 bg-white/5">Data Tracking & Reporting</span>
+    </div>
+  </header>
+
+  <div class="mb-12 glass rounded-2xl p-6 border border-white/5 bg-bgSecondary/30">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div>
+        <span class="font-mono text-[10px] bg-purple/15 text-purple px-2 py-0.5 rounded border border-purple/20">Head Of Sponsorship</span>
+        <h3 class="font-display text-xl text-white mt-2 font-medium">Nemesis Exhibition 2025</h3>
+        <p class="text-xs text-silver/60 mt-1">Led the sponsorship division to secure event funding and strategic corporate partnerships.</p>
+      </div>
+      <div class="text-left md:text-right">
+        <p class="font-mono text-xs text-silver/50">August 2025 – September 2025</p>
+        <p class="text-sm font-semibold text-teal mt-1">Realisasi Pendanaan: Rp5.866.000</p>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+      <div class="rounded-xl border border-white/5 bg-bgPrimary/50 p-4 flex flex-col justify-between">
+        <div>
+          <h4 class="text-xs font-mono text-silver/50 mb-2">TRACKER SPONSORSHIP</h4>
+          <p class="text-sm text-white font-medium">Sponsorship Database &amp; Tracking</p>
+          <p class="text-[11px] text-silver/60 mt-1">Lembar kerja rekapitulasi data, pelacakan progres, dan status pencarian mitra.</p>
+        </div>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <a href="https://docs.google.com/spreadsheets/d/1boGNUYhTULdZI5LZo-v8leraQlrjkclV/edit?usp=sharing&ouid=111507872562041592621&rtpof=true&sd=true" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Tracker 1 ↗</a>
+          <a href="https://docs.google.com/spreadsheets/d/1JFDqva89rqiFyIPrwxnT38B2ZPKH5HPB/edit?usp=sharing&ouid=111507872562041592621&rtpof=true&sd=true" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Tracker 2 ↗</a>
+          <a href="https://docs.google.com/spreadsheets/d/1y6H0gLXiwtsVkJNd1zGscnmgNO8hcT0c/edit?usp=sharing&ouid=111507872562041592621&rtpof=true&sd=true" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Tracker 3 ↗</a>
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-white/5 bg-bgPrimary/50 p-4 flex flex-col justify-between">
+        <div>
+          <h4 class="text-xs font-mono text-silver/50 mb-2">PITCH DECK / PROPOSAL</h4>
+          <p class="text-sm text-white font-medium">Sponsorship Deck &amp; B2B Offering</p>
+          <p class="text-[11px] text-silver/60 mt-1">Dokumen penawaran kerja sama visual untuk meyakinkan klien/jenama (via Canva).</p>
+        </div>
+        <div class="mt-5 flex gap-2">
+          <a href="https://canva.link/fo6csoj3kykr94h" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Lihat Pitch Deck ↗</a>
+       <a href="https://drive.google.com/file/d/19nXQNmhdVdEFO0Wys_ZdGR6HZFXHIPX-/view?usp=drive_link" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">Lihat Proposal ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="mt-8 border-t border-white/5 pt-6">
+      <h4 class="text-[10px] font-mono text-silver/60 mb-4 uppercase tracking-wider">Event Proof &amp; Documentation</h4>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1HnHGTbVjREKeaDJ4p57a3Z8FKT6bfuJg" alt="Nemesis Event Photo 1" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1A38RoAUlJfIqbbALGOgkYfAQ87fMizyi" alt="Nemesis Event Photo 2" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1ghr2y6YNvfhAAM40CYqAhggFAHe1zob8" alt="Nemesis Event Photo 3" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1BCZQwOGo2YSf_ueqhq8AWuUBjid0TSX7" alt="Nemesis Event Photo 4" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 border-t border-white/10 pt-8">
+      
+      <div class="flex flex-col">
+        <h5 class="text-[10px] font-mono text-silver/60 mb-3 uppercase tracking-wider">Aftermovie Presentation</h5>
+        <div class="aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-bgPrimary shadow-2xl">
+          <iframe 
+            src="https://drive.google.com/file/d/16hlrw36Shz8eibw687DT5fI1Hz6rnO5Y/preview" 
+            width="100%" 
+            height="100%" 
+            allow="autoplay" 
+            frameborder="0" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <h5 class="text-[10px] font-mono text-silver/60 mb-3 uppercase tracking-wider">Certificate of Appreciation</h5>
+        <div class="aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-bgPrimary shadow-2xl">
+          <iframe 
+            src="https://drive.google.com/file/d/1RAT8eI4WQK6Sx8gHIY5JaXsAJXGbXVwU/preview" 
+            width="100%" 
+            height="100%" 
+            frameborder="0">
+          </iframe>
+        </div>
+        <p class="text-[9px] text-silver/40 font-mono mt-3 italic text-right">*Officially issued for Nemesis Exhibition 2025 contribution.</p>
+      </div>
+
+    </div>
+
+  <div class="h-px bg-white/5 w-full mb-12"></div>
+
+<div class="mb-12 glass rounded-2xl p-6 border border-white/5 bg-bgSecondary/30">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div>
+        <span class="font-mono text-[10px] bg-teal/15 text-teal px-2 py-0.5 rounded border border-teal/20">Staff Of Sponsorship</span>
+        <h3 class="font-display text-xl text-white mt-2 font-medium">UFOFEST MULA 2025</h3>
+        <p class="text-xs text-silver/60 mt-1">Collaborated in sponsorship acquisition, securing strategic funding and driving partner conversion targets.</p>
+      </div>
+      <div class="text-left md:text-right">
+        <p class="font-mono text-xs text-silver/50">February 2025 – June 2025</p>
+        <p class="text-sm font-semibold text-teal mt-1">Funding Contribution: Rp10.000.000</p>
+      </div>
+    </div>
+
+    <p class="text-xs text-silver/80 mt-2 leading-relaxed">
+      Actively engaged in distributing event proposals to prospective brands and focused on business conversion goals. Successfully met the target of acquiring 85 CIMB Niaga bank accounts, which directly secured IDR 10,000,000 in event funding.
+    </p>
+
+    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+      <div class="rounded-xl border border-white/5 bg-bgPrimary/50 p-4 flex flex-col justify-between">
+        <div>
+          <h4 class="text-xs font-mono text-silver/50 mb-2">SPREADSHEET PROOF</h4>
+          <p class="text-sm text-white font-medium">Sponsorship &amp; User Acquisition Tracker</p>
+          <p class="text-[11px] text-silver/60 mt-1">Recap sheet documenting account registration and audience acquisition progress.</p>
+        </div>
+        <div class="mt-5 flex gap-2">
+          <a href="https://docs.google.com/spreadsheets/d/1yUe8EGj3DkFIssHtWjzk-DFZXC0tP4DP/edit?usp=sharing&ouid=111507872562041592621&rtpof=true&sd=true" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">View Spreadsheet ↗</a>
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-white/5 bg-bgPrimary/50 p-4 flex flex-col justify-between">
+        <div>
+          <h4 class="text-xs font-mono text-silver/50 mb-2">PROPOSAL</h4>
+          <p class="text-sm text-white font-medium">Event Partnership Proposal</p>
+          <p class="text-[11px] text-silver/60 mt-1">Sponsorship proposal used to pitch the event to potential partners.</p>
+        </div>
+        <div class="mt-5 flex gap-2">
+          <a href="https://drive.google.com/file/d/1Mu1xVdSVVFUo5_MuJcNJI_G9xfjes2d8/view?usp=sharing" target="_blank" class="flex-1 text-center rounded-lg bg-white/5 hover:bg-white/10 py-2 text-xs font-mono text-white border border-white/10 transition-all">View Proposal ↗</a>
+        </div>
+      </div>
+    </div>
+
+  <div class="mt-8 border-t border-white/5 pt-6">
+      <h4 class="text-[10px] font-mono text-silver/60 mb-4 uppercase tracking-wider">Event Proof &amp; Documentation</h4>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/11AMou-29zmpqAiJWfL2ffSIjJhy9Sn1a" alt="UFOFEST Event Photo 1" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1kNHNmDGMH_cmVaA9jEKwv3muy0vTUNMW" alt="UFOFEST Event Photo 2" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1ayaaOl_lfxKcYAZ-v2FmfQWQc9plRJhk" alt="UFOFEST Event Photo 3" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-bgPrimary">
+          <img src="https://lh3.googleusercontent.com/d/1YTH5euCfjWmPYnzIJSMh7rz4PW4_JMug" alt="UFOFEST Event Photo 4" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-white/10 pt-6">
+      
+        <div class="flex flex-col">
+          <h5 class="text-[10px] font-mono text-silver/60 mb-3 uppercase tracking-wider">Aftermovie Presentation</h5>
+          <div class="aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-bgPrimary shadow-2xl">
+            <iframe 
+              src="https://drive.google.com/file/d/1iU18F01vwNhvvnASmDSUh4dr_6riBtwm/preview" 
+              width="100%" 
+              height="100%" 
+              allow="autoplay" 
+              frameborder="0" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <h5 class="text-[10px] font-mono text-silver/60 mb-3 uppercase tracking-wider">Certificate of Appreciation</h5>
+          <div class="aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-bgPrimary shadow-2xl">
+            <iframe 
+              src="https://drive.google.com/file/d/1bTqVLXMXZy9kLzneipHuc-lrWqUdhc9Y/preview" 
+              width="100%" 
+              height="100%" 
+              frameborder="0">
+            </iframe>
+          </div>
+          <p class="text-[9px] text-silver/40 font-mono mt-3 italic text-right">*Officially issued for UFOFEST MULA 2025 contribution.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </article>
+
+  <div class="mt-8 border-t border-silver/10 pt-6">
+  <h4 class="font-display text-sm font-medium text-ink mb-4">Key Partners / Collaborators</h4>
+  
+  <div class="flex flex-row items-center gap-6">
+    
+    <div class="bg-[#1a2230] p-3 rounded-xl border border-silver/20 opacity-85 hover:opacity-100 hover:scale-105 transition-all duration-300 flex items-center justify-center h-16 w-32 cursor-pointer">
+      <img src="https://lh3.googleusercontent.com/d/1Lr5grei1VcqDw0CXT7lA1pJttgXrPQwp" alt="BTN App" class="h-full w-full object-contain">
+    </div>
+
+    <div class="bg-[#1a2230] p-3 rounded-xl border border-silver/20 opacity-85 hover:opacity-100 hover:scale-105 transition-all duration-300 flex items-center justify-center h-16 w-32 cursor-pointer">
+      <img src="https://lh3.googleusercontent.com/d/1Rv2_iPb29wHVaze1xIOEUUq82JBjh3Of" alt="OCTO Mobile" class="h-full w-full object-contain">
+    </div>
+    </section>
+  
+<section id="panel-ve" class="tab-panel">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-purple mb-2">03 — VE</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">Video Editor</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">Short-form content execution, cinematic pacing, and advanced sound design.</p>
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Premiere Pro</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">DaVinci Resolve</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Capcut</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">After Effectss</span>
+    </div>
+  </header>
+
+  <div class="flex flex-wrap gap-2 mb-6">
+    <button class="video-filter active rounded-full px-4 py-2 text-xs font-mono border border-white/10 text-white bg-white/5 transition-all duration-300 ease-in-out" data-filter="all">All</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="shortform">Short Form</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="promotional">Promotional</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="cinematic">Cinematic</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="gaming">Gaming</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="documentary">Documentary</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="vlog">Vlog</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="Music Video (Mv)">Music Video (MV)</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="shortmovie">Short Movie</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="Motion Graphics">Motion Graphics</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="aftermovie">Aftermovie</button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form" data-video-url="https://drive.google.com/file/d/1eLNXumojyBBFNfotPKQhhPhcyiUxSU2F/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1FeWE3tOksftho9fesNMcnXjPUhc4f7Ps" alt="Fivelution 2025 Reels" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:18</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Fivelution 2025 Reels</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form Editing - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Cinematic" data-video-url="https://drive.google.com/file/d/1r7ccCFJiHQdZj8g1x9nhWd3amhKUZfjz/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1q5t-7SHHNM8hpgzFntEirp_tRC-WP7PS" alt="Running Cinematic Reels" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:45</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Running Cinematic Reels</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form Editing - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form" data-video-url="https://drive.google.com/file/d/1eJoVzNizM_BOqj4Y1FmkyxHsR9jO6PjZ/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1M4AsxK4xIY_AoHx3SEK6jYL5pRik9wYM" alt="Orintetation Bakrie University Reels" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">2:10</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Orintetation Bakrie University Reels</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form" data-video-url="https://drive.google.com/file/d/1mvjVbn4-edwLEk3pRwgzUMNN5C2GRvSo/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1krsgKhv-bCbeViDnwa2SN3-jX-eQguGz" alt="Behind The Dance Minecraft Intro" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:22</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Behind The Dance Minecraft Intro</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form" data-video-url="https://drive.google.com/file/d/1XBN__KLDPo-cjjZiUzBbVc3RkKLmyQ08/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1r1fnjQweHMoFLceGsxGZrbLc4_vaPGS9" alt="Montage Vlog Curug" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:30</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Montage Vlog Curug</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/1LaFFjW4lb8Glzg9wlg-w-9t0CyabKpLM/preview">
+      <div class="relative aspect-video overflow-hidden">
+         <img src="https://lh3.googleusercontent.com/d/1zqxfI_Im_WO70ic5j8jPYF_cD9D42lIK" alt="Short Vlog Curug Milo" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">3:42</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Vlog Curug Milo</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/1aPY03oeBqNhqQOG4Ncg32D7a3Ewq6WSv/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/19iYsRIWIc0EIPeUUi1mO18dWyPFTXM1n" alt="Reels Sains Informasi" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">3:15</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Reels Sains Informasi</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Cinematic" data-video-url="https://drive.google.com/file/d/1gRvgowmhbIcaAJj1fc0wodI7Yks5ndHD/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1dMyKBvROC-FvI7qyUWDTLJUtqtJcA_7c" alt="Cinematic Short Tubuh Fokus Jiwa Lost Connection" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:56</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Cinematic Short Tubuh Fokus Jiwa Lost Connection</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Cinematic, Promotional" data-video-url="https://drive.google.com/file/d/1zU1-x0PE9tEfjA4rb5RLkwah2e-NDKgY/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1VTAfVAzzPZl_y5Q9bQ2gq1iGQ8dJKhUK" alt="Instagram Promotion Tangan Memberi Jiwa Kembali" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:33</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Instagram Promotion Tangan Memberi Jiwa Kembali</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+            <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Cinematic, Promotional" data-video-url="https://drive.google.com/file/d/1OG6tByO9ioFhyNHi9yoNygtSFoiHCxE6/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1Y18ogzprMRfYll7MVmjddniA5eolTJzb" alt="Teaser Rehat Sejenak" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:36</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Teaser Rehat Sejenak</p>
+        <p class="text-xs text-silver/60 mt-1">Promotional - Trailer For Short Movie</p>
+      </div>
+    </div>
+
+          <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Cinematic, Promotional" data-video-url="https://drive.google.com/file/d/1kL0zIk0U-sTsLQN-nn6ChdPb-fOjFty1/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1e1pj_TvMHG1flisacmIjwraG2TdBBZGh" alt="Trailer Rehat Sejenak" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:43</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Trailer Rehat Sejenak</p>
+        <p class="text-xs text-silver/60 mt-1">Promotional - Trailer For Short Movie</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/15N9YUwMe3C6OyhuC_xz69QYI3I0ZKbSc/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1H2BiuaGbJKWzVg2ZvxbpbOqkiJuTVbAH" alt="Trailer Rehat Sejenak" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:13</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Vlog Curug Dorong Angkot</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/1RZ_CKK_fDFmWllNvXZvfMf2ZlczYJmrF/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1uMxKPGAeQMLy_Wh5akYtGrWRbPhIz4NS" alt="Short Vlog Konser" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:47</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Vlog Konser</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Form, Vlog" data-video-url="https://drive.google.com/file/d/1kTqHqOJFNPGw0yMaKTpfO-tmW4pI7eHy/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/13X3kg0gXK8_7QJi5b-sWF4wi44cCx3PL" alt="Short Vlog Konser Qorygore" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:14</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Vlog Konser Qorygore</p>
+        <p class="text-xs text-silver/60 mt-1">Short Form - Reels & TikTok cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1b-FI3s1z0PHFdpydSxdOlER1c_sCp36e/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1kPOMJbkQA-l8FTr59AokxpIJhOqjPqWQ" alt="Clip Streamer" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:43</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Clip Streamer</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1Om-baUCGDmjD0mM_V0TpFLQoevarnskc/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1SzqmyKQ5jC5VK4-Kv9Gp0aSMQRgMF8h3" alt="Valorant Funny Moments Part 2" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:42</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Valorant Funny Moments Part 2</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1vKXk8rfzal5lbCPyb-DR77bshhK3Js1l/preview">
+      <div class="relative aspect-video overflow-hidden">
+        1
+        <img src="https://lh3.googleusercontent.com/d/1Ev0UY0xJK4PrdugbDfdTFvI99ZpF09W0" alt="Minecraft Survival Gameplay 1" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">12:56</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Minecraft Survival Gameplay 1</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1klaQQMBcFym1Kp4ssQUVcBvzNYU5-oUO/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1_7bTijdjPDB-NiCn6sIEAfd7ozCjetF8" alt="Valorant Funny Moments Part 1" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:56</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Valorant Funny Moments Part 1</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1Pia2YMAsZ_8cjnY9OnyGXvyvU-B6trXM/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1htxBBN-KiPJnvNTTFBMD1DcUii26CX-e" alt="Minecraft Survival Gameplay 2" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">8:30</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Minecraft Survival Gameplay 2</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1IGmAC9I5DaBskJinU6XM7tHwt5JgaFYR/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/18bg0GYLZ1kcIyK6tHRdiGt2ZjI8ieNbU" alt="Minecraft Survival Gameplay 3" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:23</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Minecraft Survival Gameplay 3</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaming" data-video-url="https://drive.google.com/file/d/1lDmQ4lZak2K8gZkRKKK7TjX7wblK77U5/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1mJ4sMsP6HBAg4-OHgYkb-iT4dpXlYhT1" alt="Minecraft Survival Gameplay 4" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">10:40</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Minecraft Survival Gameplay 4</p>
+        <p class="text-xs text-silver/60 mt-1">Gameplay - Meme & Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Documentary, Short Movie, Cinematic" data-video-url="https://drive.google.com/file/d/1mujo-mFUfO8aK2ya5--6WbVpjnug6Zgq/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/18yjuB6d_9ABHWKw6oNQIEm-GuA_0PQ9P" alt="Short Film X Dokumenter Dasar Ilmu Sosial" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">7:03</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Short Film X Dokumenter Dasar Ilmu Sosial</p>
+        <p class="text-xs text-silver/60 mt-1">Documentary & Short Movie - Production Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Documentary, Aftermovie" data-video-url="https://drive.google.com/file/d/1sxb8gsZFFLK10rNtDqSdma3HuwnX3Juy/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1pi9LSaT7Qcwr6r_URtkJ4lc3PbOfrsnt" alt="Aftermovie PJBL" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">7:57</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Aftermovie PJBL</p>
+        <p class="text-xs text-silver/60 mt-1">Documentary - Production Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1OdcpZNn2yXZg9NyzULQ8k1aX7-4XZtBi/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1PqQjett6xFl6xSDyZV9J5Y3jdqUifnaw" alt="Animator Vlog 1" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">10:59</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Animator Vlog 1</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Behind The Scene Of An Animator</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1lsC1nxzd6nV_APf_uw6Y5LQcsK-84F9n/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/16VIBS_o14tBIE1wdgN6ZPk_VYXNdOshr" alt="Animator Vlog 2" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:29</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Animator Vlog 2</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Behind The Scene Of An Animator</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1YVbwwMEHykE0Ov9Fbf0-YiQ4ZAvDx1lE/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1fiGpw4t2ALLf7vYTzw3d3LCnC2v87Ngo" alt="Vlog Bukber MIPA 1 Part 1" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:55</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Bukber MIPA 1 Part 1</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1SyEeWacqRwDfZMUy3Whs5fEpZfrgZt3U/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1Gov6Ur3i-KsNH0ovp8olFs2i0Xbo3n2q" alt="Vlog Bukber MIPA 1 Part 2" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">13:22</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Bukber MIPA 1 Part 2</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1T_oN7UtJi_1X-eIo-rLC5cQ4fZKS98OQ/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1oBvHfoeK8LDffVQ8FVxnUO6U6p3M3RNH" alt="Vlog Bukber MIPA 1 Part 3" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:17</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Bukber MIPA 1 Part 3</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1Yh8Tw384u2hdl67jhwXu1L9sQtMVjK2U/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1ksBtLS6J06Bs_IkK7zq6oNCW1SxadM2w" alt="Vlog Motion Ime 2024 Part 1" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">8:42</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Motion Ime 2024 Part 1</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Vlog" data-video-url="https://drive.google.com/file/d/1O8oyUETmQHOcP6Oo7jFMtYXDBpyDSve2/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1hjMK-es8befBl7P7PlaPkZEysZCWLeHc" alt="Vlog Motion Ime 2024 Part 2" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">10:40</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Vlog Motion Ime 2024 Part 2</p>
+        <p class="text-xs text-silver/60 mt-1">Vlog - Personal & Travel Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Music Video (MV)" data-video-url="https://drive.google.com/file/d/1wxen7Ga6JHTJhXZnL4Perhh02AUql8vr/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1sVjEzilMrH5KULML22XnXV3f9bBRqWZP" alt="Pharrell Williams - Happy (Biologi Cover)" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">2:14</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Pharrell Williams - Happy (Biologi Cover)</p>
+        <p class="text-xs text-silver/60 mt-1">Music Video - Editing Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Music Video (MV)" data-video-url="https://drive.google.com/file/d/1vOasOJGHjLOxQR8n3MvOhudBN9KFsHrj/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1dbwh-ojR4jFns0Mcuzkh2GtcFpF-wNfT" alt="Opening MIPA 1" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:28</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Opening MIPA 1</p>
+        <p class="text-xs text-silver/60 mt-1">Music Video - Editing Cut</p>
+      </div>
+    </div>
+    
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Aftermovie" data-video-url="https://drive.google.com/file/d/1iju9x_x9L7--og9KNGCU4Y8JqleqO8HU/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/1oV2PegZ53wN7ZdEv_e28RCPdTzUFzzWk" alt="Aftermovie Team & Character Building" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">7:16</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Aftermovie Team & Character Building</p>
+        <p class="text-xs text-silver/60 mt-1">Aftermovie - Editing Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Motion Graphics" data-video-url="https://drive.google.com/file/d/1ipyavSnxr2JwEpW5q-_b5zzxvJvNp69B/preview">
+      <div class="relative aspect-video overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/d/13TFK4D3Wg6ntIgWjs-vCrJH4KroDUkXL" alt="Intro Dibalik Layar Bersama Client" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:06</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Intro Dibalik Layar Bersama Client</p>
+        <p class="text-xs text-silver/60 mt-1">Motion Graphics - Design Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Motion Graphics" data-video-url="https://drive.google.com/file/d/1odLgDMAS_Mt9YyjCdz41zWWC7wIGTmG5/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1MfZPHyvnXc9JCTQpOZUV9pVzeEasBI2C" alt="Intro Andhika Storm" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:20</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Intro Andhika Storm</p>
+        <p class="text-xs text-silver/60 mt-1">Motion Graphics - Design Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Motion Graphics" data-video-url="https://drive.google.com/file/d/1PWoiPKbt6b_ZAyt5dpiu4CDTEL-B5iLC/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1MC9wKOKxQz02ATvQDadcFU5WrR2n3dDJ" alt="Intro Fivesionary 2025" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:00</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Intro Fivesionary 2025</p>
+        <p class="text-xs text-silver/60 mt-1">Motion Graphics - Design Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Motion Graphics" data-video-url="https://drive.google.com/file/d/1Aoii9GF6csNHEgNayU8hy-V-mw-jOI34/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1MhSlQpv-0GW98UC5-WLMnKIUjr7Fl9P0" alt="Intro UPNVJ" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">0:00</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Intro UPNVJ</p>
+        <p class="text-xs text-silver/60 mt-1">Motion Graphics - Design Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Movie, Cinematic" data-video-url="https://drive.google.com/file/d/1BbLBn4uqNKuvrZOcsBZPjLMEy9VhoM-b/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1Chl_xHxuyFC2WHz_jZeVSL3Tp8cy8psN" alt="Rehat Sejenak" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">6:08</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Rehat Sejenak</p>
+        <p class="text-xs text-silver/60 mt-1">Short Movie - Cinematic Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Movie, Cinematic" data-video-url="https://drive.google.com/file/d/10QETusT9Y0Z2JBhhreX1yOOSbIvDv7vr/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/14fIYhF-Ca-BsrD402O8hd_HudjhvqtXN" alt="Partner" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">3:50</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Kembali Hangat</p>
+        <p class="text-xs text-silver/60 mt-1">Short Movie - Cinematic Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Movie, Cinematic" data-video-url="https://drive.google.com/file/d/1TrzUbT6Bdz1vpweiC11wAzkmxOZwxgZ_/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1NhJOJEOBQXU8cQfjvzVoJNK2UZeo6Wbg" alt="Partner" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:08</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Gema Asap</p>
+        <p class="text-xs text-silver/60 mt-1">Short Movie - Cinematic Cut</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Movie, Cinematic" data-video-url="https://drive.google.com/file/d/10g-49Ot4b9f5b0UQzV-S4oHSmtQjE6NS/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1dM2bWdxZUhM-gM1ShrjmynVj2FDHtw1Y" alt="Connection" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">11:08</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Connection</p>
+        <p class="text-xs text-silver/60 mt-1">Short Movie - Cinematic Cut</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Short Movie, Cinematic" data-video-url="https://drive.google.com/file/d/1iiiCg9sGGhzWSGklA8m_pgVRR7DQiKYU/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1vjstcq5kXMovFkyTlAt19-SpaTruec9M" alt="Interim" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">19:59</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Interim</p>
+        <p class="text-xs text-silver/60 mt-1">Short Movie - Cinematic Cut</p>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<section id="panel-vg" class="tab-panel">
+  <header class="mb-10">
+    <p class="font-mono text-xs text-teal mb-2">04 — VG</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-white">Videographer</h2>
+    <p class="text-silver/80 mt-2 max-w-xl">Creative visual capture, event coverage, and asset production.</p>
+    <div class="flex flex-wrap gap-2 mt-5">
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Event Coverage</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Photography</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Color Grading</span>
+      <span class="tag-pill rounded-full px-3 py-1.5 text-xs font-mono text-silver">Asset Delivery</span>
+    </div>
+  </header>
+
+  <h3 class="font-display text-xl text-white mb-5">Gallery</h3>
+ <div class="flex flex-wrap gap-2 mb-6">
+    <button class="video-filter active rounded-full px-4 py-2 text-xs font-mono border border-white/10 text-white bg-white/5 transition-all duration-300 ease-in-out" data-filter="all">All</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="Camera Person">Camera Person</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="Assistant Camera">Assistant Camera</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="Clapper">Clapper</button>
+    <button class="video-filter rounded-full px-4 py-2 text-xs font-mono border border-transparent text-silver/60 hover:text-white transition-all duration-300 ease-in-out" data-filter="Gaffer">Gaffer</button>
+  </div>
+
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Assistant Camera" data-video-url="https://drive.google.com/file/d/1bbYZpQ0Adfqk49oLLXnVrYY2mP55peTf/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/14DRTK3dStaoOYC0di_RHgxwYl_yEnISZ" alt="Tar-Sok" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">8:39</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Tar-Sok</p>
+        <p class="text-xs text-silver/60 mt-1">Ascam - Assistant Camera Person</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaffer" data-video-url="https://drive.google.com/file/d/166pnDap9mQn2tP8labSF8dksPMof6umU/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1aV7kjVeEmj0lGsnq2ZrwVMsqUPUjtgSA" alt="Tangan Memberi Jiwa Kembali" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">5:52</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Tangan Memberi Jiwa Kembali</p>
+        <p class="text-xs text-silver/60 mt-1">Gaffer - Lighting Setup</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Camera Person" data-video-url="https://drive.google.com/file/d/1BbLBn4uqNKuvrZOcsBZPjLMEy9VhoM-b/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1Chl_xHxuyFC2WHz_jZeVSL3Tp8cy8psN" alt="Rehat Sejenak" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">6:08</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Rehat Sejenak</p>
+        <p class="text-xs text-silver/60 mt-1">Camera Person - Main Camera Setup</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaffer" data-video-url="https://drive.google.com/file/d/18oHgRSJvhsq4dr0ZjSs7RXyy7d7__6z3/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1XQhE0GcV7etY2ROKLw1GLbMfT76xcBct" alt="Partner" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">1:05</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Partner</p>
+        <p class="text-xs text-silver/60 mt-1">Gaffer - Lighting Setup</p>
+      </div>
+    </div>
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaffer" data-video-url="https://drive.google.com/file/d/1FaSclqoIt8mpvchbC5rrq2k83mS93jfA/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1wlR5Ukl4cLAUli7obgvBNC15LhrZ08vu" alt="Helm Sebelah Mata" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">2:51</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Helm Sebelah Mata</p>
+        <p class="text-xs text-silver/60 mt-1">Gaffer - Lighting Setup</p>
+      </div>
+    </div>
+
+
+    <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Clapper" data-video-url="https://drive.google.com/file/d/11genyhI4boKiFu1-BEceO31vq6_LlWgr/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/1vWel-pPWvmoHaKJKkUsKYj1KrAtXLxYs" alt="11 Annivesary" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">10:50</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">11 Anniversary</p>
+        <p class="text-xs text-silver/60 mt-1">Clapper - Slating every Shot</p>
+      </div>
+    </div>
+
+        <div class="video-card cursor-pointer lift glass rounded-2xl overflow-hidden border border-transparent hover:border-purple/40" data-category="Gaffer" data-video-url="https://drive.google.com/file/d/10QETusT9Y0Z2JBhhreX1yOOSbIvDv7vr/preview">
+      <div class="relative aspect-video overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/d/14fIYhF-Ca-BsrD402O8hd_HudjhvqtXN" alt="Kembali Hangat" class="absolute inset-0 w-full h-full object-cover thumb-zoom">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-icon w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">▶</div>
+        </div>
+        <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-bgPrimary/70 text-white px-1.5 py-0.5 rounded">8:39</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm text-white">Kembali Hangat</p>
+        <p class="text-xs text-silver/60 mt-1">Gaffer - Lighting Setup</p>
+      </div>
+    </div>
+
+
+</main>
+
+<div id="lightbox" class="fixed inset-0 z-50 lightbox-bg hidden items-center justify-center p-6">
+  <button id="lightboxClose" class="absolute top-6 right-6 text-white/70 hover:text-white text-2xl leading-none transition-colors duration-300 ease-in-out" aria-label="Close">&times;</button>
+  <div class="max-w-2xl w-full">
+    <div id="lightboxImg" class="w-full h-72 md:h-96 rounded-2xl bg-gradient-to-br from-teal to-purple"></div>
+    <p id="lightboxCaption" class="text-center text-silver mt-4 text-sm font-mono"></p>
+  </div>
+</div>
+
+<div id="videoLightbox" class="fixed inset-0 z-50 lightbox-bg hidden items-center justify-center p-4 md:p-8">
+  <button id="videoLightboxClose" class="absolute top-6 right-6 text-white/70 hover:text-white text-3xl leading-none transition-colors duration-300 ease-in-out" aria-label="Close">&times;</button>
+  <div class="w-full max-w-4xl aspect-video bg-black/80 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(138,43,226,0.15)] relative border border-white/10">
+    <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
+
+<footer id="contact" class="border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-14 flex flex-col md:flex-row md:items-end justify-between gap-8">
+    <div>
+      <p class="font-mono text-xs text-teal mb-3">LET'S TALK</p>
+      <h3 class="font-display text-3xl md:text-4xl text-white font-semibold max-w-md">Got a role in mind?<br>I'd love to hear about it.</h3>
+      <a href="mailto:andhikaaidanproject@gmail.com" class="inline-block mt-5 text-silver hover:text-white border-b border-teal/40 hover:border-teal transition-colors duration-300 ease-in-out">andhikaaidanproject@gmail.com</a>
+    </div>
+    <div class="flex gap-3">
+      <a href="#" class="tag-pill rounded-full px-4 py-2 text-xs font-mono text-silver">LinkedIn</a>
+      <a href="#" class="tag-pill rounded-full px-4 py-2 text-xs font-mono text-silver">Instagram</a>
+      <a href="#" class="tag-pill rounded-full px-4 py-2 text-xs font-mono text-silver">Behance</a>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 md:px-8 pb-8">
+    <p class="text-xs text-silver/40 font-mono">© 2026 Andhika Aidan Gibran. Built with care, one discipline at a time.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------------- Tab switching ---------------- */
+  var navBtns = document.querySelectorAll('.nav-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+
+function activateTab(tab){
+  // 1. Mengaktifkan tombol tab yang diklik
+  navBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.tab === tab); });
+  
+  // 2. Mengaktifkan panel yang sesuai (panel-ve, panel-vg, panel-sm, panel-pp)
+  panels.forEach(function(p){ p.classList.toggle('active', p.id === 'panel-' + tab); });
+  
+  // 3. Auto-scroll otomatis di mobile
+  var activeBtn = document.querySelector('.nav-btn[data-tab="' + tab + '"]');
+  if(activeBtn){
+    activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+}
+
+navBtns.forEach(function(btn){
+  btn.addEventListener('click', function(){ activateTab(btn.dataset.tab); });
+});
+
+  /* ---------------- Typewriter hero ---------------- */
+  var roles = [
+    'Social Media',
+    'Partnership Marketing',
+    'Video Editor',
+    'Videographer',
+  ];
+  var twEl = document.getElementById('typewriter');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(reduceMotion){
+    twEl.textContent = roles[0];
+  } else {
+    var ri = 0, ci = 0, deleting = false;
+    function tick(){
+      var word = roles[ri];
+      if(!deleting){
+        ci++;
+        twEl.textContent = word.slice(0, ci);
+        if(ci === word.length){
+          deleting = true;
+          setTimeout(tick, 1400);
+          return;
+        }
+      } else {
+        ci--;
+        twEl.textContent = word.slice(0, ci);
+        if(ci === 0){
+          deleting = false;
+          ri = (ri + 1) % roles.length;
+        }
+      }
+      setTimeout(tick, deleting ? 35 : 65);
+    }
+    tick();
+  }
+
+  /* ---------------- Animated counters ---------------- */
+  var counters = document.querySelectorAll('.counter');
+  var counterObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(function(c){ counterObserver.observe(c); });
+
+  function animateCounter(el){
+    var target = parseFloat(el.dataset.target);
+    var decimals = parseInt(el.dataset.decimal || '0', 10);
+    var suffix = el.dataset.suffix || '';
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var value = target * eased;
+      el.textContent = value.toFixed(decimals) + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toFixed(decimals) + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------------- Progress bars ---------------- */
+  var bars = document.querySelectorAll('.progress-fill');
+  var barObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var target = entry.target;
+        requestAnimationFrame(function(){
+          target.style.width = target.dataset.progress + '%';
+        });
+        barObserver.unobserve(target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(function(b){ barObserver.observe(b); });
+
+/* ---------------- Video Filter (Multi-Category Support) ---------------- */
+  var videoFilters = document.querySelectorAll('.video-filter');
+  var videoCards = document.querySelectorAll('.video-card');
+
+  if (videoFilters.length > 0) {
+    videoFilters.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        
+        // 1. Pindahkan class aktif (Border & Background) ke tombol yang diklik
+        videoFilters.forEach(function(filterBtn) {
+          filterBtn.classList.remove('active', 'border-white/10', 'bg-white/5', 'text-white');
+          filterBtn.classList.add('border-transparent', 'text-silver/60');
+        });
+
+        btn.classList.add('active', 'border-white/10', 'bg-white/5', 'text-white');
+        btn.classList.remove('border-transparent', 'text-silver/60');
+
+        // 2. Logika filter kartu video (Mendukung Banyak Kategori)
+        var filterValue = btn.dataset.filter ? btn.dataset.filter.toLowerCase().replace(/[^a-z0-9]/g, '') : '';
+        
+        videoCards.forEach(function(card) {
+          // Ambil teks kategori, lalu pecah berdasarkan koma (,) menjadi sebuah list/array
+          var rawCategories = card.dataset.category ? card.dataset.category.split(',') : [];
+          
+          // Bersihkan setiap kategori di dalam list dari spasi dan huruf kapital
+          var cleanCategories = rawCategories.map(function(cat) {
+            return cat.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+          });
+          
+          // Cek jika memilih 'all' ATAU kategori tombol yang diklik ada di dalam list kategori video
+          if (btn.dataset.filter === 'all' || cleanCategories.includes(filterValue)) {
+            card.style.display = ''; // Tampilkan
+          } else {
+            card.style.display = 'none'; // Sembunyikan
+          }
+        });
+
+      });
+    });
+  }
+
+  /* ---------------- Image Lightbox (Asli) ---------------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var lightboxClose = document.getElementById('lightboxClose');
+
+  document.querySelectorAll('.gallery-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var bgClasses = Array.from(item.firstElementChild.classList).filter(function(c){
+        return c.indexOf('bg-gradient') === 0 || c.indexOf('from-') === 0 || c.indexOf('via-') === 0 || c.indexOf('to-') === 0;
+      });
+      lightboxImg.className = 'w-full h-72 md:h-96 rounded-2xl ' + bgClasses.join(' ');
+      lightboxCaption.textContent = item.dataset.caption;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox(){
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if(lightbox) lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
+
+  /* ---------------- Video Lightbox (Baru) ---------------- */
+  var videoLightbox = document.getElementById('videoLightbox');
+  var videoIframe = document.getElementById('videoIframe');
+  var videoLightboxClose = document.getElementById('videoLightboxClose');
+
+  document.querySelectorAll('.video-card[data-video-url]').forEach(function(card){
+    card.addEventListener('click', function(){
+      var url = card.dataset.videoUrl;
+      if(url) {
+        videoIframe.src = url;
+        videoLightbox.classList.remove('hidden');
+        videoLightbox.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  function closeVideoLightbox(){
+    videoLightbox.classList.add('hidden');
+    videoLightbox.classList.remove('flex');
+    videoIframe.src = ''; /* Menghapus source iframe akan menghentikan video */
+    document.body.style.overflow = '';
+  }
+  if(videoLightboxClose) videoLightboxClose.addEventListener('click', closeVideoLightbox);
+  if(videoLightbox) videoLightbox.addEventListener('click', function(e){ if(e.target === videoLightbox) closeVideoLightbox(); });
+
+  /* ---------------- Universal Escape Key ---------------- */
+  document.addEventListener('keydown', function(e){ 
+    if(e.key === 'Escape') { 
+      closeLightbox(); 
+      closeVideoLightbox(); 
+    } 
+  });
+
+})();
+</script>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar{ display: none; }
+</style>
+
+</body>
+</html>
